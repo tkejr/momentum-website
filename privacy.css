@@ -1,0 +1,142 @@
+:root {
+  --background: #F3F1EC;
+  --ink: #171717;
+  --muted: #8A8781;
+  --divider: #D9D7D1;
+}
+
+* { box-sizing: border-box; }
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--ink);
+  font-family: "Inter";
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  width: min(700px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 48px 0 64px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(36px, 3vw, 50px);
+  font-weight: 700;
+  line-height: 1.08;
+}
+
+.updated {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.policy-copy {
+  margin-top: 26px;
+  border-top: 1.5px solid var(--divider);
+  padding-top: 28px;
+}
+
+.policy-copy p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.policy-copy p + p {
+  margin-top: 18px;
+}
+
+.policy-copy .contact {
+  color: var(--muted);
+}
+
+.email-copy {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--muted);
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.copy-status {
+  margin-left: 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.signoff {
+  margin: 38px 0 0;
+  border-top: 1.5px solid var(--divider);
+  padding-top: 24px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  main {
+    width: calc(100% - 40px);
+    min-height: 100vh;
+    padding: 48px 0 140px;
+  }
+
+  .back-link {
+    margin-bottom: 22px;
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: clamp(30px, 8.6vw, 36px);
+    white-space: nowrap;
+  }
+
+  .updated {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+
+  .policy-copy {
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+
+  .policy-copy p {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .policy-copy p + p {
+    margin-top: 17px;
+  }
+
+  .signoff {
+    margin-top: 34px;
+    padding-top: 22px;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F3F1EC" />
+    <title>Momentum app</title>
+    <link rel="icon" type="image/png" href="assets/appicon.png?v=2" />
+    <link rel="apple-touch-icon" href="assets/appicon.png?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" media="(max-width: 430px)" />
+    <link rel="stylesheet" href="desktop.css" media="(min-width: 431px)" />
+  </head>
+  <body>
+    <main class="mobile-page" aria-label="Momentum app landing page">
+      <section class="hero" aria-labelledby="hero-title">
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Monthly progress tracker</p>
+        <h1 id="hero-title"><span>See your month</span><span><span class="clear-word">build up</span>.</span></h1>
+        <p class="subhead"><span>A monthly progress tracker</span><span>built around one question:</span><span>did today move you forward?</span></p>
+        <a class="app-store-badge" href="https://apps.apple.com/app/id6777656253" aria-label="Download Momentum on the App Store">
+          <img src="assets/download-button.svg" alt="" />
+        </a>
+        <div class="hero-device" aria-label="Momentum’s monthly view and daily check-in">
+          <img class="hero-visual visual-one" src="assets/home.png" alt="Momentum’s monthly progress view on an iPhone" />
+          <img class="hero-visual visual-two" src="assets/check-in.png" alt="Momentum asking if today moved you forward" />
+        </div>
+
+        <section class="widgets" aria-label="Home Screen widgets">
+          <p class="eyebrow widgets-pill"><span class="eyebrow-dot" aria-hidden="true"></span>Home Screen widgets</p>
+          <div class="widget-card"><img src="assets/medium-widget.png" alt="Momentum medium Home Screen widget" /></div>
+          <div class="widget-card"><img src="assets/large-widget.png" alt="Momentum large Home Screen widget" /></div>
+        </section>
+
+        <section class="cta" aria-labelledby="cta-title">
+          <h2 id="cta-title">Start with today.</h2>
+          <p class="cta-subhead">One tap a day. See your progress.</p>
+          <a class="app-store-badge cta-badge" href="https://apps.apple.com/app/id6777656253" aria-label="Download Momentum on the App Store">
+            <img src="assets/download-button.svg" alt="" />
+          </a>
+        </section>
+      </section>
+      <nav class="mobile-legal" aria-label="Legal">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+      </nav>
+    </main>
+
+    <main class="desktop-page" aria-label="Momentum app landing page">
+      <section class="desktop-hero" aria-labelledby="desktop-title">
+        <div class="desktop-copy">
+          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Monthly progress tracker</p>
+          <h1 id="desktop-title"><span>See your month</span><span><span class="clear-word">build up</span>.</span></h1>
+          <a class="desktop-download-card" href="https://apps.apple.com/app/id6777656253" aria-label="Download Momentum on the App Store">
+            <img class="qr-code" src="assets/qrcode.png" alt="" />
+            <span class="desktop-download-copy"><span>Download on the</span><strong>App Store</strong></span>
+          </a>
+          <div class="desktop-benefits" aria-label="Momentum benefits">
+            <div class="benefit"><strong>One question</strong><span>Every day</span></div>
+            <div class="benefit"><strong>One tap</strong><span>To check in</span></div>
+            <div class="benefit"><strong>Home Screen widgets</strong><span>Progress at a glance</span></div>
+          </div>
+        </div>
+        <div class="desktop-visual" aria-label="Momentum app screens">
+          <nav class="desktop-legal" aria-label="Legal">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+          </nav>
+          <img class="desktop-visual-frame visual-one" src="assets/home.png" alt="Momentum showing a month of progress" />
+          <img class="desktop-visual-frame visual-two" src="assets/check-in.png" alt="Momentum’s daily check-in" />
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const mobileCheckIn = document.querySelector(".mobile-page .visual-two");
+      let deviceCycle;
+      let showCheckIn;
+      let hideCheckIn;
+
+      function stopDeviceCycle() {
+        clearInterval(deviceCycle);
+        clearTimeout(showCheckIn);
+        clearTimeout(hideCheckIn);
+      }
+
+      function runDeviceCycle() {
+        stopDeviceCycle();
+        mobileCheckIn.classList.remove("is-visible");
+
+        const cycle = () => {
+          mobileCheckIn.classList.remove("is-visible");
+          showCheckIn = setTimeout(() => mobileCheckIn.classList.add("is-visible"), 1120);
+          hideCheckIn = setTimeout(() => mobileCheckIn.classList.remove("is-visible"), 2624);
+        };
+
+        cycle();
+        deviceCycle = setInterval(cycle, 3200);
+      }
+
+      window.addEventListener("pageshow", runDeviceCycle);
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          stopDeviceCycle();
+        } else {
+          runDeviceCycle();
+        }
+      });
+
+      runDeviceCycle();
+    </script>
+  </body>
+</html>
